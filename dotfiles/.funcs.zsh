@@ -1,8 +1,19 @@
-function start_ituran() {
-  if [ "$TMUX" = "" ]; then tmux; fi
-  tmux send-keys "ituran" enter \;\
-  new-window -c "#{pane_current_path}"
-  new-window -c "#{pane_current_path}"
+function reload_source() {
+    source ~/.zshrc
+}
+
+function clear_nvim() {
+    rm -rf ~/.config/nvim
+    rm -rf ~/.local/state/nvim
+    rm -rf ~/.local/share/nvim
+}
+
+function bkp_nvim() {
+    mv ~/.config/nvim{,.bak}
+
+    mv ~/.local/share/nvim{,.bak}
+    mv ~/.local/state/nvim{,.bak}
+    mv ~/.cache/nvim{,.bak}    
 }
 
 function flutter_watch(){
@@ -28,7 +39,7 @@ function launch_emulator() {
     nohup `emulator -avd $emu &`
 }
 
-function jd-gui() {
+function jd_gui() {
     java -jar /Users/josemartins/Low_Level/jd-gui/jd-gui-1.6.6.jar $1
 }
 

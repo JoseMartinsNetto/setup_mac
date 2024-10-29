@@ -1,0 +1,34 @@
+[init]
+	defaultBranch = master
+[pull]
+	rebase = false
+[push]
+	autoSetupRemote = true
+[user]
+	name = José Martins
+	email = j.msantos.netto@gmail.com
+[core]
+	editor = vim
+[alias]
+  c  = !git add . && git commit -m
+  co = checkout
+  cm = checkout master
+  cd = checkout develop
+  cb = checkout -b
+  st = status -sb
+  sf = show --name-only
+  l = log --pretty=format:'%Cred%h%Creset %C(bold)%cr%Creset %Cgreen<%an>%Creset %s' --max-count=30
+  incoming = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' ..@{u})
+  outgoing = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' @{u}..)
+  unstage = reset HEAD --
+  undo = checkout --
+  rollback = reset --soft HEAD~1
+  updatelocaly = remote update origin --prune
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[safe]
+	directory = /Applications/XAMPP/xamppfiles/htdocs
+	directory = /Applications/XAMPP/xamppfiles/htdocs

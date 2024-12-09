@@ -32,6 +32,7 @@ function install_brew_packages() {
         cocoapods
         fvm
         starship
+        fastfetch
     )
 
     for package in "${packages[@]}"; do
@@ -237,5 +238,7 @@ install_rust
 setup_neovim
 install_fonts
 install_flutter
+
+fastfetch
 
 echo "Setup complete!"

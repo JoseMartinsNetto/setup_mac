@@ -1,5 +1,7 @@
 eval "$(starship init zsh)"
 
+fastfetch
+
 # Folder Aliases
 
 # 4Code

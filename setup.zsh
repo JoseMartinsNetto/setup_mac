@@ -31,6 +31,7 @@ function install_brew_packages() {
         ripgrep
         cocoapods
         fvm
+        starship
     )
 
     for package in "${packages[@]}"; do
@@ -89,24 +90,9 @@ function setup_dotfiles() {
     cp dotfiles/.wezterm.lua ~/.wezterm.lua
     cp dotfiles/.zshrc ~/.zshrc
     cp dotfiles/.tmux.conf ~/.tmux.conf
+    cp dotfiles/starship.toml ~/.config/starship.toml
 
     echo "dotfiles setup done."
-}
-
-function install_oh_my_zsh() {
-    reload_source
-    
-    if [ -e "/Users/josemartins/.oh-my-zsh" ]; then
-        echo " OhMyZsh is already installed."
-    else
-        echo "OhMyZsh not installed yet, installing..."
-
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-        git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-        echo "OhMyZsh installed."
-    fi
 }
 
 function install_node() {
@@ -244,7 +230,6 @@ function install_flutter() {
 install_brew_packages
 install_brew_cask
 setup_dotfiles
-install_oh_my_zsh
 install_node
 install_java
 install_deno

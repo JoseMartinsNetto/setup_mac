@@ -195,6 +195,7 @@ export PATH="$PATH:/Users/josemartins/Projects/Jose/Dart/scripts/bin"
 export PATH="$PATH:/Users/josemartins/Low_Level/dex2jar-v2.3"
 export PATH="$PATH:/Users/josemartins/Low_Level/scripts"
 export PATH="$PATH:/Users/josemartins/Low_Level/realesrgan"
+export PATH="$PATH:/Users/josemartins/Low_Level/nvim-macos-arm64/bin"
 
 export PATH="$PATH:/Users/josemartins/.local/bin"
 export PATH="$PATH:/Users/josemartins/.nvim/bin"

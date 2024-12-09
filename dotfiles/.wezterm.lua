@@ -1,25 +1,22 @@
 local wezterm = require("wezterm")
 local mux = wezterm.mux
-local config = {}
-
-if wezterm.config_builder then
-	config = wezterm.config_builder()
-end
-
--- config.default_prog = { "/opt/homebrew/bin/tmux", "-f", "/Users/josemartins/.tmux.conf" }
+local config = wezterm.config_builder()
 
 wezterm.on("gui-startup", function()
 	local _, _, window = mux.spawn_window({})
 	window:gui_window():maximize()
 end)
 
-config.hide_mouse_cursor_when_typing = false
+config = {
+	hide_mouse_cursor_when_typing = false,
+	font = wezterm.font("FiraCode Nerd Font", { weight = "Regular" }),
+	font_size = 14,
+	color_scheme = "nord",
+	enable_tab_bar = false,
+	window_close_confirmation = "NeverPrompt",
+	window_decorations = "RESIZE",
+}
 
-config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Medium" })
--- config.font = wezterm.font("Montserrat", { weight = "Medium" })
-config.font_size = 14
-config.color_scheme = "Catppuccin Macchiato"
-config.enable_tab_bar = false
 config.window_padding = {
 	left = 0,
 	right = 0,
@@ -35,14 +32,14 @@ config.keys = {
 	},
 }
 
-local dimmer = { brightness = 0.01 }
-config.background = {
-	{
-		source = {
-			File = "/Users/josemartins/Documents/Resources/Images/minimalist cyberpunk-style.png",
-		},
-		hsb = dimmer,
-	},
-}
+-- local dimmer = { brightness = 0.001 }
+-- config.background = {
+-- 	{
+-- 		source = {
+-- 			File = "/Users/josemartins/Documents/Resources/Images/minimalist cyberpunk-style.png",
+-- 		},
+-- 		hsb = dimmer,
+-- 	},
+-- }
 
 return config

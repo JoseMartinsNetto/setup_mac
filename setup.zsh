@@ -17,6 +17,8 @@ function install_homebrew() {
 function install_brew_packages() {
     reload_source
 
+    brew tap leoafarias/fvm
+
     packages=(
         git
         neovim
@@ -24,9 +26,11 @@ function install_brew_packages() {
         gleam
         go
         tmux
-        pipx,
+        pipx
         lazygit
         ripgrep
+        cocoapods
+        fvm
     )
 
     for package in "${packages[@]}"; do
@@ -58,17 +62,16 @@ function install_brew_cask() {
         dbeaver-community
         whatsapp
         telegram-desktop
-        franz
         obs
         wezterm
-        accord
+        discord
         microsoft-teams
-        macs-fan-control
         devcleaner
         zed
         elmedia-player
         locationsimulator
         the-unarchiver
+        figma
     )
 
     for app in "${cask_apps[@]}"; do
@@ -76,19 +79,18 @@ function install_brew_cask() {
     done
 }
 
-function download_dotfiles() {
+function setup_dotfiles() {
     reload_source
     
     echo "Setup dotfiles"
 
-    mv dotfiles/.funcs.zsh ~/.funcs.zsh
-    mv dotfiles/.gitconfig  ~/.gitconfig 
-    mv dotfiles/.wezterm.lua ~/.wezterm.lua
-    mv dotfiles/.zshrc ~/.zshrc
-    mv dotfiles/.tmux.conf ~/.tmux.conf
+    cp dotfiles/.funcs.zsh ~/.funcs.zsh
+    cp dotfiles/.gitconfig  ~/.gitconfig 
+    cp dotfiles/.wezterm.lua ~/.wezterm.lua
+    cp dotfiles/.zshrc ~/.zshrc
+    cp dotfiles/.tmux.conf ~/.tmux.conf
 
     echo "dotfiles setup done."
-    
 }
 
 function install_oh_my_zsh() {
@@ -123,7 +125,6 @@ function install_node() {
             echo "NodeJs is already installed."
     fi
 
-
     if ! command -v ng &> /dev/null
         then
             echo "@anguar/cli is not installed. Installing @anguar/cli..."
@@ -134,8 +135,6 @@ function install_node() {
         else
             echo "@anguar/cli is already installed."
     fi
-
-    
 }
 
 function install_java() {
@@ -206,23 +205,52 @@ function setup_neovim() {
         echo "Neovim configured"
     fi
 }
+
+function install_fonts() {
+    echo "Installing fonts..."
+
+    fonts=(
+        font-caskaydia-cove-nerd-font
+        font-jetbrains-mono-nerd-font
+        font-zed-mono-nerd-font
+        font-hack-nerd-font
+        font-go-mono-nerd-font-Mono
+        font-fira-code-nerd-font
+    )
+
+    for font in "${fonts[@]}"; do
+        brew install --cask $font
+    done
+
+    rm -rf extracted
+
+
+    echo "Fonts Installed."
+}
+
+function install_flutter() {
+    if ! command -v flutter &> /dev/null
+        then
+            echo "flutter sdk is not installed. Installing flutter sdk..."
+
+            reload_source
+
+            git clone https://github.com/flutter/flutter.git -b stable ~/Low_Level/flutter
+        else
+            echo "flutter sdk is already installed."
+    fi
+}
     
 install_brew_packages
-
 install_brew_cask
-
-download_dotfiles
-
+setup_dotfiles
 install_oh_my_zsh
-
 install_node
-
 install_java
-
 install_deno
-
 install_rust
-
 setup_neovim
+install_fonts
+install_flutter
 
-echo "Setup completo!"
+echo "Setup complete!"

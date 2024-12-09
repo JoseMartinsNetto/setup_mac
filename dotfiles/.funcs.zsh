@@ -1,8 +1,16 @@
+function clear_branchs() {
+    git fetch -p ; git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -D
+
+    git remote update origin --prune
+}
+
 function reload_source() {
     source ~/.zshrc
 }
 
 function clear_nvim() {
+    bkp_nvim
+
     rm -rf ~/.config/nvim
     rm -rf ~/.local/state/nvim
     rm -rf ~/.local/share/nvim
@@ -14,6 +22,14 @@ function bkp_nvim() {
     mv ~/.local/share/nvim{,.bak}
     mv ~/.local/state/nvim{,.bak}
     mv ~/.cache/nvim{,.bak}    
+}
+
+function launch_ituran() {
+    flutter_watch --flavor hml
+}
+
+function connect_to_locarx() {
+    ssh -i ~/Documents/LocarXHMLKeyPair.pem ec2-user@ec2-34-239-109-141.compute-1.amazonaws.com
 }
 
 function flutter_watch(){

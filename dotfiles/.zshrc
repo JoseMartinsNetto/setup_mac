@@ -54,6 +54,12 @@ alias compose_pharmaChat_down="docker compose -f /Users/josemartins/Low_Level/do
 alias python="python3"
 alias pip="pip3"
 
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
 # PATHS
 export PATH="$PATH:/Users/josemartins/Low_Level/flutter/bin"
 export PATH="$PATH":"$HOME/.pub-cache/bin"

@@ -8,7 +8,15 @@
 	name = José Martins
 	email = j.msantos.netto@gmail.com
 [core]
-	editor = vim
+	editor = neovim
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	dark = true
+[merge]
+	conflictstyle = zdiff3
 [alias]
   c  = !git add . && git commit -m
   co = checkout

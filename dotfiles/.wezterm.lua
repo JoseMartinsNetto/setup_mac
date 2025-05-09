@@ -9,12 +9,12 @@ end)
 
 config = {
 	hide_mouse_cursor_when_typing = false,
-	font = wezterm.font("FiraCode Nerd Font", { weight = "Regular" }),
-	font_size = 14,
-	color_scheme = "nord",
+	font = wezterm.font("FiraCode Nerd Font", { weight = "Medium" }),
+	-- font = wezterm.font("Hack Nerd Font", { weight = "Bold" }),
+	font_size = 13.5,
+	color_scheme = "Gruvbox Dark (Gogh)",
 	enable_tab_bar = false,
 	window_close_confirmation = "NeverPrompt",
-	window_decorations = "RESIZE",
 }
 
 config.window_padding = {
@@ -32,14 +32,27 @@ config.keys = {
 	},
 }
 
--- local dimmer = { brightness = 0.001 }
--- config.background = {
--- 	{
--- 		source = {
--- 			File = "/Users/josemartins/Documents/Resources/Images/minimalist cyberpunk-style.png",
--- 		},
--- 		hsb = dimmer,
--- 	},
--- }
+config.background = {
+	{
+		source = {
+			File = "/Users/josemartins/Documents/Resources/Images/minimalist cyberpunk-style.png",
+		},
+		hsb = {
+			hue = 1.0,
+			saturation = 1.01,
+			brightness = 0.02,
+		},
+		width = "100%",
+		height = "100%",
+	},
+	{
+		source = {
+			Color = "#282C35",
+		},
+		width = "100%",
+		height = "100%",
+		opacity = 0.1,
+	},
+}
 
 return config

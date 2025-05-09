@@ -59,7 +59,6 @@ function install_brew_cask() {
         google-chrome
         docker
         jetbrains-toolbox
-        c0re100-qbittorrent
         postman
         dbeaver-community
         whatsapp
@@ -71,7 +70,6 @@ function install_brew_cask() {
         devcleaner
         zed
         elmedia-player
-        locationsimulator
         the-unarchiver
         figma
     )

@@ -32,3 +32,5 @@
 [safe]
 	directory = /Applications/XAMPP/xamppfiles/htdocs
 	directory = /Applications/XAMPP/xamppfiles/htdocs
+[pager]
+	diff = false

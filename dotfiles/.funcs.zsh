@@ -1,3 +1,13 @@
+
+function aiCommit() {
+    git diff --staged | sgpt "Commit my changes with message based on this diff using coventional commits standarts, give only command, not explain anything."
+}
+
+function take() {
+    mkdir -p $1
+    cd $1
+}
+
 function clear_branchs() {
     git fetch -p ; git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -D
 
@@ -10,8 +20,17 @@ function reload_source() {
 
 function clear_nvim() {
     bkp_nvim
+    clear_nvim_cache
 
     rm -rf ~/.config/nvim
+}
+
+function new() {
+    touch $1
+    n $1
+}
+
+function clear_nvim_cache() {
     rm -rf ~/.local/state/nvim
     rm -rf ~/.local/share/nvim
 }
